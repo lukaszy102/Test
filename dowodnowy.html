@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#fff">
+
+<title>mDowód</title>
+
+<link href="https://fonts.googleapis.com/css?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:#f5f7fa;
+    font-family:'Inter',sans-serif;
+    overscroll-behavior:contain;
+}
+
+/* HEADER */
+
+header{
+    height:72px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.header-title{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:20px;
+    font-weight:700;
+    color:#000;
+}
+
+/* CLOCK */
+
+.clock-container{
+    text-align:center;
+    margin-top:12px;
+    margin-bottom:-2px;
+    font-size:13px;
+    font-weight:500;
+    color:#5f6775;
+}
+
+/* CARD */
+
+.mowod-card{
+    margin:12px 16px 0 16px;
+    padding:24px 20px 40px 20px;
+
+    background-color:#e1f0fa;
+    background-image:url('Screenshot_20260524-082007.ChatGPT.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    border-radius:28px 28px 0 0;
+
+    border:1px solid rgba(255,255,255,0.8);
+
+    box-shadow:
+    0 10px 30px rgba(160,175,190,0.15);
+
+    display:flex;
+    gap:22px;
+
+    position:relative;
+    overflow:hidden;
+
+    z-index:2;
+}
+
+/* ŁUK */
+
+.mowod-card::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-1px;
+    width:100%;
+    height:36px;
+
+    background:#fff;
+
+    border-radius:50% 50% 0 0;
+
+    z-index:1;
+}
+
+/* LEFT */
+
+.card-left{
+    width:36%;
+    display:flex;
+    flex-direction:column;
+}
+
+.photo-container{
+    width:100%;
+    aspect-ratio:3/4;
+
+    border-radius:24px;
+    overflow:hidden;
+
+    background:#cfd4dc;
+
+    position:relative;
+    z-index:3;
+}
+
+.photo-container img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.animated-flag{
+    width:56px;
+    margin-top:16px;
+    border-radius:4px;
+    position:relative;
+    z-index:3;
+}
+
+.emblem-section{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:12px;
+
+    position:relative;
+    z-index:3;
+}
+
+.emblem-section img{
+    width:24px;
+}
+
+.emblem-text{
+    font-size:8px;
+    line-height:1.1;
+    font-weight:700;
+    color:#434955;
+    text-transform:uppercase;
+}
+
+/* RIGHT */
+
+.card-right{
+    width:64%;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+    position:relative;
+    z-index:3;
+}
+
+.data-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.data-value{
+    font-size:16px;
+    font-weight:700;
+    color:#111827;
+    text-transform:uppercase;
+    line-height:1.1;
+}
+
+.data-label{
+    font-size:11px;
+    color:#6b7280;
+    margin-top:2px;
+}
+
+/* STATUS */
+
+.status-container{
+    margin:-8px 16px 12px 16px;
+
+    background:#fff;
+
+    padding:16px 20px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    border-radius:0 0 24px 24px;
+
+    border:1px solid #edf0f5;
+    border-top:none;
+
+    box-shadow:
+    0 10px 24px rgba(160,175,190,0.10);
+
+    position:relative;
+    z-index:5;
+}
+
+.status-circle{
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+    border:2px solid #16a34a;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#f0fdf4;
+
+    flex-shrink:0;
+}
+
+.status-text{
+    font-size:15px;
+    font-weight:600;
+    color:#16a34a;
+}
+
+/* MENU */
+
+.menu-list{
+    margin:12px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu-item{
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:18px 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border:1px solid #edf0f5;
+
+    box-shadow:
+    0 4px 12px rgba(160,175,190,0.05);
+}
+
+.menu-item-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.menu-item-left img{
+    width:24px;
+    height:24px;
+}
+
+.menu-item-text{
+    font-size:15px;
+    font-weight:600;
+    color:#1f2937;
+}
+
+.chevron-icon{
+    color:#9ca3af;
+    font-size:14px;
+}
+
+/* NAVBAR */
+
+.BottomNav_bottomNav__JQdpA{
+    width:100%;
+    height:85px;
+
+    position:fixed;
+    bottom:0;
+    left:0;
+
+    background:#f8f9fc;
+
+    border-top:1px solid #e5e7eb;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    z-index:999;
+}
+
+.BottomNav_bnTab__WzkWH{
+    width:20%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.BottomNav_bnTab__WzkWH img{
+    height:24px;
+    margin-bottom:4px;
+}
+
+.BottomNav_bnTab__WzkWH span{
+    font-size:10px;
+    color:#6b7280;
+}
+
+.BottomNav_activeText__6iAIF{
+    color:#1e40af !important;
+    font-weight:600 !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="#" style="display:flex;align-items:center;text-decoration:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M20 12H4M4 12L10 18M4 12L10 6"
+            stroke="#000"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+        </svg>
+    </a>
+
+    <span class="header-title">mDowód</span>
+
+    <div style="width:24px;"></div>
+
+</header>
+
+<div class="clock-container">
+    Czas: <span id="live-clock">--:--:-- --.--.----</span>
+</div>
+
+<!-- CARD -->
+
+<main class="mowod-card">
+
+    <div class="card-left">
+
+        <div class="photo-container">
+            <img src="1000002280-photoaidcom-greyscale.png">
+        </div>
+
+        <img src="flaga.gif" class="animated-flag">
+
+        <div class="emblem-section">
+            <img src="godlo.gif">
+
+            <div class="emblem-text">
+                Rzeczpospolita<br>Polska
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card-right">
+
+        <div class="data-group">
+            <div class="data-value">ŁUKASZ</div>
+            <div class="data-label">Imię (imiona)</div>
+        </div>
+
+        <div class="data-group">
+            <div class="data-value">MICHAŁOWSKI</div>
+            <div class="data-label">Nazwisko</div>
+        </div>
+
+        <div class="data-group">
+            <div class="data-value">POLSKIE</div>
+            <div class="data-label">Obywatelstwo</div>
+        </div>
+
+        <div class="data-group">
+            <div class="data-value">10.04.2008</div>
+            <div class="data-label">Data urodzenia</div>
+        </div>
+
+        <div class="data-group">
+            <div class="data-value">08241068735</div>
+            <div class="data-label">Numer PESEL</div>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- STATUS -->
+
+<div class="status-container">
+
+    <div class="status-circle">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+    </div>
+
+    <span class="status-text">
+        Dokument ważny
+    </span>
+
+</div>
+
+<!-- MENU -->
+
+<div class="menu-list">
+
+    <div class="menu-item">
+        <div class="menu-item-left">
+            <img src="checkbo.png">
+            <span class="menu-item-text">Potwierdź swoje dane</span>
+        </div>
+
+        <span class="chevron-icon">&#10095;</span>
+    </div>
+
+    <div class="menu-item">
+        <div class="menu-item-left">
+            <img src="card.png">
+            <span class="menu-item-text">Dane dokumentu</span>
+        </div>
+
+        <span class="chevron-icon">&#10095;</span>
+    </div>
+
+</div>
+
+<br><br><br><br><br>
+
+<!-- NAVBAR -->
+
+<div class="BottomNav_bottomNav__JQdpA">
+
+    <div class="BottomNav_bnTab__WzkWH">
+        <img src="ab001_home.svg">
+        <span>Start</span>
+    </div>
+
+    <div class="BottomNav_bnTab__WzkWH">
+        <img src="b002_framed_person.svg">
+        <span class="BottomNav_activeText__6iAIF">Dokumenty</span>
+    </div>
+
+    <div class="BottomNav_bnTab__WzkWH">
+        <img src="ac001_services.svg">
+        <span>Usługi</span>
+    </div>
+
+    <div class="BottomNav_bnTab__WzkWH">
+        <img src="ai001_scanner_qr.svg">
+        <span>Kod QR</span>
+    </div>
+
+    <div class="BottomNav_bnTab__WzkWH">
+        <img src="ab010_more.svg">
+        <span>Więcej</span>
+    </div>
+
+</div>
+
+<script>
+
+function updateClock(){
+
+    const now = new Date();
+
+    const hours = String(now.getHours()).padStart(2,'0');
+    const minutes = String(now.getMinutes()).padStart(2,'0');
+    const seconds = String(now.getSeconds()).padStart(2,'0');
+
+    const day = String(now.getDate()).padStart(2,'0');
+    const month = String(now.getMonth()+1).padStart(2,'0');
+
+    const year = now.getFullYear();
+
+    document.getElementById('live-clock').textContent =
+    `${hours}:${minutes}:${seconds} ${day}.${month}.${year}`;
+}
+
+updateClock();
+setInterval(updateClock,1000);
+
+</script>
+
+</body>
+  </html>
